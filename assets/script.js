@@ -11,10 +11,20 @@ const specialChar = ["!","'","#","$","%","&","(",")","*","+",",","-",".","/",":"
 // create variable to store the combined possible characters to be used
 var passOptions = [];
 
+// Main fuction to start the process of generating the password
 function generatePassword() {
 
-    var pwLength = parseInt(prompt("Please enter the desired length of the password:"), 10);
-    
+// create prompt to ask how long the password should be 
+    var pwLength = parseInt(prompt("Please enter the desired length of the password:(Min: 8 - Max: 128)"), 10);
+// check to make sure that the requested length is between 8 and 128 characters
+    if (pwLength < 8) {
+      return "Password must be 8 characters or more! Please try again.";
+    }
+    else if (pwLength > 128){
+      return "Password must be 128 characters or less! Please try again.";
+    }
+
+// create confirm alerts to get true or false answers for if we should include each character type
     var incLowerCase = confirm("Would you like to include Lower case characters in your new password? (OK = Yes, Cancel = No)");
 
     var incUpperCase = confirm("Would you like to include Upper case characters in your new password? (OK = Yes, Cancel = No)");
@@ -23,19 +33,17 @@ function generatePassword() {
     
     var incSpecialChar = confirm("Would you like to include Special Charcters in your new password? (OK = Yes, Cancel = No)");
 
-// check to make sure they selected at least one
+// check to make sure they selected at least one character type
     if (
       incLowerCase === false &&
       incUpperCase === false &&
       incNum === false &&
       incSpecialChar === false
     ) {
-     // alert('Must select at least one character type');
       return 'WARNING! You must select at least one character type! Please try again.';
     }
 
-    createCharList();
-
+// function to create the array of characters that will be used to generate the password based on the user's selections
     function createCharList() {
 
       if (incSpecialChar === true) {
@@ -57,12 +65,21 @@ function generatePassword() {
       return passOptions;
     } 
 
+// calls the fuction to create array of characters
+    createCharList();
+
+    
+
+
+// console logging user choices and combined string so I can see what info has been selected    
     console.log(pwLength);
     console.log(incSpecialChar);
     console.log(incNum);
     console.log(incLowerCase);
     console.log(incUpperCase);
     console.log(passOptions);
+
+
     return null;
 }
 
