@@ -1,4 +1,8 @@
 # 03 JavaScript: Password Generator
+![scnsht1](https://user-images.githubusercontent.com/90010873/152266380-562b7268-e069-4529-abca-92151360d92b.jpg)
+
+Delployed Link: https://interceptr83.github.io/Password-Generator/
+
 
 ## Your Task
 
